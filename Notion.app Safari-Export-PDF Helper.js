@@ -36,6 +36,7 @@ const enter_export_mode = () => {
     }
     // 关闭顶栏
     document.querySelector("div.notion-topbar").style.display = 'none';
+    document.querySelector("div.notion-help-button").style.display = 'none';
     // 设置 html.notion-html, body.notion-body, #notion-app 的 style 均为 height: auto, overflow: scroll
     document.querySelectorAll('html.notion-html, body.notion-body, #notion-app').forEach((e) => {
         e.style.height = 'auto';
