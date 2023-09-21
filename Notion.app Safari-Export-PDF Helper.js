@@ -8,16 +8,16 @@
 // 监听用户的 command + F1 按键, 触发本脚本
 let in_export_mode = false;
 document.addEventListener('keydown', (e) => {
-    // console.log(e); test = e;
+    console.log(e); test = e;
     if (e.metaKey && e.key === 'F1') {  
         if (!in_export_mode) {
-            if (confirm("确定要进入`导出模式`吗? 请确保当前页面已保存!")) {
+            if (confirm("Enter expert mode!")) {
                 in_export_mode = true;
                 enter_export_mode();
             }
         }
         else {   // 已经在`导出模式`了, 恢复正常模式需要刷新页面
-            if (confirm("确定要退出`导出模式`吗? 网页会刷新重启!")) {
+            if (confirm("Leave expert mode!")) {
                 window.location.reload();
             }
         }
@@ -27,7 +27,7 @@ document.addEventListener('keydown', (e) => {
 
 const enter_export_mode = () => {
     // 关闭侧边栏
-    if (document.querySelector("div.notion-sidebar-container").style.width !== "0px") {
+    if (document.querySelector("nav.notion-sidebar-container").style.width !== "0px") {
         document.dispatchEvent(new KeyboardEvent("keydown", {
             keyCode: 220,   // `\`
             metaKey: true,
@@ -47,6 +47,6 @@ const enter_export_mode = () => {
     // 设置 class = "notion-scroller vertical" 的 overflow 为 scroll
     document.querySelector('div.notion-scroller.vertical').style.overflow = 'visible';
     // 设置 class = "notion-frame" 的 height 为 100%
-    document.querySelector('div.notion-frame').style.height = "100%";
-    document.querySelector('div.notion-frame').style.maxHeight = "100%";
+    document.querySelector('main.notion-frame').style.height = "100%";
+    document.querySelector('main.notion-frame').style.maxHeight = "100%";
 }
